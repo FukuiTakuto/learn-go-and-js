@@ -9,3 +9,38 @@ h1{
   border:1px solid #d1d1d1;
   padding:30px;
 }
+
+input{
+  width:100%;
+}
+
+button{
+  width:100%;
+  background-color:#2069F3;
+  color:#fff;
+  padding:10px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .4);
+}
+
+.control{
+  margin-bottom:3em;
+}
+
+label{
+  display:block;
+  margin-bottom: .5em ;
+}
+
+.required{
+  margin-left:.3em;
+  color:#f33;
+  font-size:.9em;
+  padding:3px;
+  background-color:#fee;
+  font-weight:bold;
+}
+
+body{
+  background-color:#fafafa;
+}
