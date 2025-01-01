@@ -16,6 +16,7 @@ func main() {
   
 	mux.HandleFunc("/site",sitehandler)
   mux.HandleFunc("/form",formhandler)
+	mux.HandleFunc("/boot",boothabdler)
 
 	fmt.Println("http://localhost:8080")
 	http.ListenAndServe(":8080",mux)
@@ -38,5 +39,13 @@ func sitehandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil{
 		fmt.Println("Template execution error:", err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
+}
+
+func boothabdler(w http.ResponseWriter,r *http.Request){
+	err := templates.ExecuteTemplate(w,"boot.html",nil)
+	if err!=nil{
+    fmt.Println("テンプレートエラー")
+		http.Error(w,"インターネットエラー",http.StatusInternalServerError)
 	}
 }
