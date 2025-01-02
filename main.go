@@ -18,6 +18,7 @@ func main() {
   mux.HandleFunc("/form",formhandler)
 	mux.HandleFunc("/boot",boothabdler)
 	mux.HandleFunc("/today",todayhandler)
+	mux.HandleFunc("/timer",timerhandler)
 
 	fmt.Println("http://localhost:8080")
 	http.ListenAndServe(":8080",mux)
@@ -53,6 +54,14 @@ func boothabdler(w http.ResponseWriter,r *http.Request){
 
 func todayhandler(w http.ResponseWriter,r *http.Request){
 	err := templates.ExecuteTemplate(w,"calendar.html",nil)
+	if err!=nil{
+		fmt.Println("テンプレートエラー")
+		http.Error(w,"インターネットエラー",http.StatusInternalServerError)
+	}
+}
+
+func timerhandler(w http.ResponseWriter,r *http.Request){
+	err := templates.ExecuteTemplate(w,"timer.html",nil)
 	if err!=nil{
 		fmt.Println("テンプレートエラー")
 		http.Error(w,"インターネットエラー",http.StatusInternalServerError)
